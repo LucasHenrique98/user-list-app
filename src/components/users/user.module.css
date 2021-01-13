@@ -1,0 +1,38 @@
+.divName {
+  display: flex;
+  flex-direction: column;
+}
+
+.photo {
+  border: 0.5px solid black;
+  border-radius: 50%;
+}
+
+.listUsers {
+  display: flex;
+  flex-direction: row;
+}
+
+.divUser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.dateUser {
+  margin-left: 15px;
+  margin-top: 10px;
+}
+
+.container {
+  padding: 20px;
+  margin-left: 20px;
+}
+
+.title {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: aqua;
+  text-shadow: 5px 5px 10px black;
+}
