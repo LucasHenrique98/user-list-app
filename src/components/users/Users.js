@@ -1,51 +1,25 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import css from './user.module.css';
 import Usuario from './Usuario';
 
-export default class Users extends Component {
-  constructor() {
-    super();
+export default function Users({ users }) {
+  const [secondsVisible, setSecondsVisible] = useState(0);
 
-    this.state = {
-      secondsVisible: 0,
-    };
-
-    this.interval = null;
-  }
-
-  componentDidMount() {
-    console.log('componentDidMount de Users.js');
-
-    this.interval = setInterval(() => {
-      const { secondsVisible } = this.state;
-      this.setState({
-        secondsVisible: secondsVisible + 1,
-      });
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSecondsVisible(secondsVisible + 1);
     }, 1000);
-  }
+    return () => {
+      clearInterval(interval);
+    };
+  }, [secondsVisible]);
 
-  componentDidUpdate() {
-    console.log('componentDidUpdate de Users.js');
-  }
-
-  componentWillUnmount() {
-    console.log('componentWillUnmount de Users.js');
-    clearInterval(this.interval);
-  }
-
-  render() {
-    const { users } = this.props;
-    const { secondsVisible } = this.state;
-    console.log(users);
-    return (
-      <div className={css.divName}>
-        <p className={css.dateUser}>
-          Users visible for {secondsVisible} seconds
-        </p>
-        <ul>
-          <Usuario user={users} />
-        </ul>
-      </div>
-    );
-  }
+  return (
+    <div className={css.divName}>
+      <p className={css.dateUser}>Users visible for {secondsVisible} seconds</p>
+      <ul>
+        <Usuario user={users} />
+      </ul>
+    </div>
+  );
 }
